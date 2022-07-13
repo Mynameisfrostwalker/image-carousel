@@ -1,0 +1,9 @@
+.vscode
+/src
+.eslintignore
+.eslintrc.json
+.prettierrc.json
+webpack.config.js
+dist/favicon.ico
+dist/index.html
+tsconfig.json
