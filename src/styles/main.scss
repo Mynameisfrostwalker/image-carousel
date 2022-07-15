@@ -14,11 +14,13 @@ body {
 .container {
     width: 40vw;
     height: 40vh;
+    margin: 10px;
 }
 
 .frostwalkercarousel {
     @include mixins.size(100%, 100%);
     @include mixins.flex(row, stretch, stretch);
+    @include mixins.box-control(5px, 0);
 
     .outerBorder {
         @include mixins.color($theme-color-2, $theme-color);

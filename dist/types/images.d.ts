@@ -1,4 +1,10 @@
-declare const addImage: (image: unknown, ...otherImages: unknown[]) => void;
-declare const deleteImage: (image: unknown, ...otherImages: unknown[]) => void;
-declare const returnImagesArray: () => HTMLImageElement[];
-export { addImage, deleteImage, returnImagesArray };
+declare const imgStore: Images[];
+declare class Images {
+    private imagesArr;
+    readonly id: string;
+    constructor(id: string);
+    addImage(image: unknown, ...otherImages: unknown[]): void;
+    deleteImage(image: unknown, ...otherImages: unknown[]): void;
+    returnImagesArray(): HTMLImageElement[];
+}
+export { imgStore, Images };
