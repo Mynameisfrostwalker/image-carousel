@@ -1,0 +1,38 @@
+@use "./mixins";
+
+$theme-color: black;
+$theme-color-2: white;
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 40vw;
+    height: 40vh;
+}
+
+.frostwalkercarousel {
+    @include mixins.size(100%, 100%);
+    @include mixins.flex(row, stretch, stretch);
+
+    .outerBorder {
+        @include mixins.color($theme-color-2, $theme-color);
+        @include mixins.size(100%, 100%);
+        @include mixins.flex(column, center, space-around);
+    }
+
+    .innerBorder {
+        @include mixins.color($theme-color, $theme-color-2);
+        @include mixins.size(90%, 70%, false);
+        @include mixins.flex(column, stretch, stretch);
+
+        img {
+            @include mixins.size(100%, 100%, false);
+        }
+    }
+}
