@@ -37,4 +37,18 @@ body {
             @include mixins.size(100%, 100%, false);
         }
     }
+
+    .controlsContainer {
+        @include mixins.flex(column, center, stretch);
+        @include mixins.size(100%, null, false);
+    }
+
+    .arrowsContainer {
+        @include mixins.flex(row, center, space-around);
+        @include mixins.size(100%, null, false);
+    }
+
+    .arrows {
+        @include mixins.font(calc(10px + 1vw + 1vh))
+    }
 }

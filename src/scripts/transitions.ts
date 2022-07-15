@@ -1,13 +1,15 @@
 import { carouselStore } from "./images";
 
-const changeImage = function changeImage(carousel: Element, num: number) {
+let nextIntervalId: NodeJS.Timer;
+
+const changeImage = function changeImageAtInterval(
+  carousel: Element,
+  num: number
+) {
   const image = carousel.querySelector("img");
   if (image) {
-    const currentStyle = image.getAttribute("style");
-    image?.setAttribute("style", `${currentStyle || ""} opacity: 0;`);
-    const nextImage = carouselStore[num].nextImage();
-    image.src = nextImage.src;
-    image?.setAttribute("style", `${currentStyle || ""}`);
+    const nextImageElement = carouselStore[num].nextImage();
+    image.src = nextImageElement.src;
   }
 };
 
@@ -16,7 +18,7 @@ const next = function setTimerForNextImage() {
   carousels.forEach((carousel) => {
     for (let i = 0; i < carouselStore.length; i += 1) {
       if (carouselStore[i].id === carousel.id) {
-        setInterval(() => {
+        nextIntervalId = setInterval(() => {
           changeImage(carousel, i);
         }, carouselStore[i].timer);
       }
@@ -24,4 +26,8 @@ const next = function setTimerForNextImage() {
   });
 };
 
-export default next;
+const nextImage = function nextImageOnArrowRightClick(e: Event) {
+  console.log(e.currentTarget);
+};
+
+export { next, nextImage };

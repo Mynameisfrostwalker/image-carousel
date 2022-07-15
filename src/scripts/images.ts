@@ -13,7 +13,7 @@ class Carousel {
 
   private current = 0;
 
-  constructor(id: string, timer: number) {
+  constructor(id: string, timer = 5000) {
     this.id = id;
     this.timer = timer;
     storeImgObj(this);

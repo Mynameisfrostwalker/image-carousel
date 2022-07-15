@@ -1,2 +1,3 @@
 declare const next: () => void;
-export default next;
+declare const nextImage: (e: Event) => void;
+export { next, nextImage };
