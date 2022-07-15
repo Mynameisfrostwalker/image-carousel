@@ -1,10 +1,13 @@
-declare const imgStore: Images[];
-declare class Images {
+declare const carouselStore: Carousel[];
+declare class Carousel {
     private imagesArr;
     readonly id: string;
-    constructor(id: string);
+    readonly timer: number;
+    private current;
+    constructor(id: string, timer: number);
     addImage(image: unknown, ...otherImages: unknown[]): void;
     deleteImage(image: unknown, ...otherImages: unknown[]): void;
     returnImagesArray(): HTMLImageElement[];
+    nextImage(): HTMLImageElement;
 }
-export { imgStore, Images };
+export { carouselStore, Carousel };

@@ -13,6 +13,7 @@ const config: Configuration = {
     index: "./src/scripts/index.ts",
     images: "./src/scripts/images.ts",
     carouselDisplay: "./src/scripts/carouselDisplay.ts",
+    transitions: "./src/scripts/transitions.ts",
   },
   module: {
     rules: [

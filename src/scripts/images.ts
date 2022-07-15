@@ -1,16 +1,21 @@
-const imgStore: Images[] = [];
+const carouselStore: Carousel[] = [];
 
-const storeImgObj = function storeImagesObjects(obj: Images) {
-  imgStore.push(obj);
+const storeImgObj = function storeImagesObjects(obj: Carousel) {
+  carouselStore.push(obj);
 };
 
-class Images {
+class Carousel {
   private imagesArr: HTMLImageElement[] = [];
 
   readonly id;
 
-  constructor(id: string) {
+  readonly timer;
+
+  private current = 0;
+
+  constructor(id: string, timer: number) {
     this.id = id;
+    this.timer = timer;
     storeImgObj(this);
   }
 
@@ -55,6 +60,14 @@ class Images {
   returnImagesArray() {
     return [...this.imagesArr];
   }
+
+  nextImage() {
+    if (this.current === this.imagesArr.length - 1) {
+      this.current = -1;
+    }
+    this.current += 1;
+    return this.imagesArr[this.current];
+  }
 }
 
-export { imgStore, Images };
+export { carouselStore, Carousel };

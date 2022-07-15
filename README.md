@@ -16,4 +16,8 @@
 
 ```Javascript
     index.js
+import Carousel from "image-carousel-frostwalker";
+
+const carousel1 = new Carousel("carouselId");
+carousel1.addImage(image1, image2, image3);
 ```
