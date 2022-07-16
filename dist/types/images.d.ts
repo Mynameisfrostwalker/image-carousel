@@ -9,5 +9,6 @@ declare class Carousel {
     deleteImage(image: unknown, ...otherImages: unknown[]): void;
     returnImagesArray(): HTMLImageElement[];
     nextImage(): HTMLImageElement;
+    previousImage(): HTMLImageElement;
 }
 export { carouselStore, Carousel };

@@ -1,4 +1,4 @@
-import * as path from "path";
+import path from "path";
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import type { Configuration } from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";

@@ -68,6 +68,14 @@ class Carousel {
     this.current += 1;
     return this.imagesArr[this.current];
   }
+
+  previousImage() {
+    if (this.current === 0) {
+      this.current = this.imagesArr.length;
+    }
+    this.current -= 1;
+    return this.imagesArr[this.current];
+  }
 }
 
 export { carouselStore, Carousel };

@@ -1,3 +1,4 @@
 declare const next: () => void;
 declare const nextImage: (e: Event) => void;
-export { next, nextImage };
+declare const previousImage: (e: Event) => void;
+export { next, nextImage, previousImage };

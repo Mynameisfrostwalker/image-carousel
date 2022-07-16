@@ -1,5 +1,5 @@
 import { carouselStore } from "./images";
-import { nextImage } from "./transitions";
+import { nextImage, previousImage } from "./transitions";
 
 const displayImage = function displayImage(
   carousel: Element,
@@ -42,11 +42,13 @@ const displayImage = function displayImage(
 const createArrows = (arrowsContainer: HTMLDivElement) => {
   const arrow1 = document.createElement("div");
   arrow1.classList.add("arrow1", "arrows");
+  arrow1.addEventListener("click", previousImage);
   const i1 = document.createElement("i");
   i1.classList.add("fas", "fa-arrow-alt-circle-left");
   arrow1.appendChild(i1);
   const arrow2 = document.createElement("div");
   arrow2.classList.add("arrow2", "arrows");
+  arrow2.addEventListener("click", nextImage);
   const i2 = document.createElement("i");
   i2.classList.add("fas", "fa-arrow-alt-circle-right");
   arrow2.appendChild(i2);
