@@ -15,3 +15,6 @@ carousel1.addImage(image1, image2, image3);
 const carousel2 = new Carousel("carousel2", 7000);
 carousel2.addImage(image4, image5);
 next();
+setTimeout(() => {
+  carousel2.addImage(image1, image2);
+}, 8000);

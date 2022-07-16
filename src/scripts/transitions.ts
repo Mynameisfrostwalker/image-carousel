@@ -4,6 +4,21 @@ const nextIntervalId: {
   [index: string]: number;
 } = {};
 
+const changeCircle = function changeCircleWhenImageChanges(
+  carousel: Element,
+  num: number
+) {
+  const circlesContainer = carousel.querySelector(".circlesContainer");
+  const circles = circlesContainer?.children || [];
+  for (let i = 0; i < circles.length; i += 1) {
+    if (circles[i].classList.contains("active")) {
+      circles[i].classList.remove("active");
+    }
+  }
+  const { current } = carouselStore[num];
+  circles[current].classList.add("active");
+};
+
 const changeImage = function changeImageAtInterval(
   carousel: Element,
   num: number,
@@ -16,6 +31,7 @@ const changeImage = function changeImageAtInterval(
         ? carouselStore[num].nextImage()
         : carouselStore[num].previousImage();
     image.src = nextImageElement.src;
+    changeCircle(carousel, num);
   }
 };
 

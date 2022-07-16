@@ -2,6 +2,7 @@
 
 $theme-color: black;
 $theme-color-2: white;
+$theme-color-3: cyan;
 
 body {
     min-width: 100vw;
@@ -30,7 +31,7 @@ body {
 
     .innerBorder {
         @include mixins.color($theme-color, $theme-color-2);
-        @include mixins.size(90%, 70%, false);
+        @include mixins.size(90%, 60%, false);
         @include mixins.flex(column, stretch, stretch);
 
         img {
@@ -44,14 +45,19 @@ body {
     }
 
     .circlesContainer { 
-        @include mixins.flex(row, center, space-around);
+        @include mixins.flex(row, center, space-evenly);
         @include mixins.size(100%, null, false);
+        @include mixins.box-control(0px, 5px)
     }
 
     .circles {
         @include mixins.box-control(1px, 1px, null, 50%);
         @include mixins.color(null, $theme-color-2);
         @include mixins.size(calc(1px + 0.5vh + 0.5vw), $min: false);
+
+        &.active {
+            @include mixins.color(null, $theme-color-3);
+        }
     }
 
     .arrowsContainer {

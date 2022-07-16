@@ -4,6 +4,27 @@ const storeImgObj = function storeImagesObjects(obj: Carousel) {
   carouselStore.push(obj);
 };
 
+const createCircles = function createCirclesDisplay(id: string, num = 0) {
+  const carousel = document.querySelector(`#${id}`);
+  const circlesContainer = carousel?.querySelector(".circlesContainer");
+  if (circlesContainer) {
+    circlesContainer.replaceChildren();
+    for (let i = 0; i < carouselStore.length; i += 1) {
+      if (carouselStore[i].id === carousel?.id) {
+        const imgArrLength = carouselStore[i].returnImagesArray().length;
+        for (let j = 0; j < imgArrLength; j += 1) {
+          const circleDiv = document.createElement("div");
+          circleDiv.classList.add("circles", `frostwalkercircle-${j}`);
+          if (j === num) {
+            circleDiv.classList.add("active");
+          }
+          circlesContainer.appendChild(circleDiv);
+        }
+      }
+    }
+  }
+};
+
 class Carousel {
   private imagesArr: HTMLImageElement[] = [];
 
@@ -11,7 +32,7 @@ class Carousel {
 
   readonly timer;
 
-  private current = 0;
+  current = 0;
 
   constructor(id: string, timer = 5000) {
     this.id = id;
@@ -34,6 +55,7 @@ class Carousel {
         }
       });
     }
+    createCircles(this.id, this.current);
   }
 
   deleteImage(image: unknown, ...otherImages: unknown[]) {
@@ -55,6 +77,7 @@ class Carousel {
         }
       });
     }
+    createCircles(this.id, this.current);
   }
 
   returnImagesArray() {

@@ -60,14 +60,19 @@ const createArrows = function createArrowsDisplay(
 
 const createCircles = function createCirclesDisplay(
   carousel: Element,
-  circlesContainer: HTMLDivElement
+  circlesContainer: HTMLDivElement,
+  num = 0
 ) {
+  circlesContainer.replaceChildren();
   for (let i = 0; i < carouselStore.length; i += 1) {
     if (carouselStore[i].id === carousel.id) {
       const imgArrLength = carouselStore[i].returnImagesArray().length;
       for (let j = 0; j < imgArrLength; j += 1) {
         const circleDiv = document.createElement("div");
-        circleDiv.classList.add("circles", `frostwalkercircle${j}`);
+        circleDiv.classList.add("circles", `frostwalkercircle-${j}`);
+        if (j === num) {
+          circleDiv.classList.add("active");
+        }
         circlesContainer.appendChild(circleDiv);
       }
     }
