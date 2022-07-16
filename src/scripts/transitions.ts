@@ -22,14 +22,19 @@ const changeCircle = function changeCircleWhenImageChanges(
 const changeImage = function changeImageAtInterval(
   carousel: Element,
   num: number,
-  change: "next" | "previous" = "next"
+  change: "next" | "previous" | "random" = "next",
+  randomNum?: number
 ) {
   const image = carousel.querySelector("img");
   if (image) {
-    const nextImageElement =
-      change === "next"
-        ? carouselStore[num].nextImage()
-        : carouselStore[num].previousImage();
+    let nextImageElement;
+    if (change === "next") {
+      nextImageElement = carouselStore[num].nextImage();
+    } else if (change === "previous") {
+      nextImageElement = carouselStore[num].previousImage();
+    } else {
+      nextImageElement = carouselStore[num].jumpImage(randomNum || 0);
+    }
     image.src = nextImageElement.src;
     changeCircle(carousel, num);
   }
@@ -87,6 +92,31 @@ const previousImage = function previousImageOnLeftArrowClick(e: Event) {
   moveImage(e, "previous");
 };
 
-const jumpImage = function jumpImageOnCircleClick() {};
+const jumpImage = function jumpImageOnCircleClick(e: Event) {
+  const circle = e.currentTarget;
+  if (circle instanceof HTMLElement) {
+    const id = circle.id.split("-")[1];
+    const carousel =
+      circle.parentElement?.parentElement?.parentElement?.parentElement;
+    if (carousel) {
+      const innerBorder = carousel.querySelector(".innerBorder");
+      for (let i = 0; i < carouselStore.length; i += 1) {
+        if (carouselStore[i].id === carousel.id) {
+          innerBorder?.classList.remove(
+            `frostwalkeranimation${carouselStore[i].timer}`
+          );
+          window.clearInterval(nextIntervalId[carousel.id]);
+          changeImage(carousel, i, "random", parseInt(id, 10));
+          innerBorder?.classList.add(
+            `frostwalkeranimation${carouselStore[i].timer}`
+          );
+          nextIntervalId[carousel.id] = window.setInterval(() => {
+            changeImage(carousel, i);
+          }, carouselStore[i].timer);
+        }
+      }
+    }
+  }
+};
 
 export { next, nextImage, previousImage, jumpImage };

@@ -1,5 +1,5 @@
 import { carouselStore } from "./images";
-import { nextImage, previousImage } from "./transitions";
+import { nextImage, previousImage, jumpImage } from "./transitions";
 
 const displayImage = function displayImage(
   carousel: Element,
@@ -71,6 +71,7 @@ const createCircles = function createCirclesDisplay(
         const circleDiv = document.createElement("div");
         circleDiv.classList.add("circles");
         circleDiv.id = `frostwalkercircle-${j}`;
+        circleDiv.addEventListener("click", jumpImage);
         if (j === num) {
           circleDiv.classList.add("active");
         }
