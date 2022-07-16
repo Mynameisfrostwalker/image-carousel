@@ -7,5 +7,6 @@ webpack.config.js
 dist/favicon.ico
 dist/index.html
 tsconfig.json
-dist/*.jpeg
+*.jpeg
 bleep.txt
+webpack.config.ts
