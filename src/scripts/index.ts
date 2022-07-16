@@ -21,3 +21,5 @@ setTimeout(() => {
   carousel2.addImage(image1, image2);
 }, 8000);
 subscribe("imagesArrChange", createCircles);
+
+export default Carousel;

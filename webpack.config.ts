@@ -1,14 +1,10 @@
 import path from "path";
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import type { Configuration } from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 
-const devServer: DevServerConfiguration = {
-  static: "./dist",
-};
 
 const config: Configuration = {
-  mode: "development",
+  mode: "production",
   entry: {
     index: "./src/scripts/index.ts",
     images: "./src/scripts/images.ts",
@@ -41,7 +37,6 @@ const config: Configuration = {
   resolve: {
     extensions: [".js", ".ts"],
   },
-  devtool: "inline-source-map",
   plugins: [
     new HTMLWebpackPlugin({
       template: "./src/index.html",
@@ -53,12 +48,6 @@ const config: Configuration = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
-  devServer,
 };
 
 export default config;
