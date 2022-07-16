@@ -39,7 +39,9 @@ const displayImage = function displayImage(
   }
 };
 
-const createArrows = (arrowsContainer: HTMLDivElement) => {
+const createArrows = function createArrowsDisplay(
+  arrowsContainer: HTMLDivElement
+) {
   const arrow1 = document.createElement("div");
   arrow1.classList.add("arrow1", "arrows");
   arrow1.addEventListener("click", previousImage);
@@ -56,13 +58,31 @@ const createArrows = (arrowsContainer: HTMLDivElement) => {
   arrowsContainer.appendChild(arrow2);
 };
 
+const createCircles = function createCirclesDisplay(
+  carousel: Element,
+  circlesContainer: HTMLDivElement
+) {
+  for (let i = 0; i < carouselStore.length; i += 1) {
+    if (carouselStore[i].id === carousel.id) {
+      const imgArrLength = carouselStore[i].returnImagesArray().length;
+      for (let j = 0; j < imgArrLength; j += 1) {
+        const circleDiv = document.createElement("div");
+        circleDiv.classList.add("circles", `frostwalkercircle${j}`);
+        circlesContainer.appendChild(circleDiv);
+      }
+    }
+  }
+};
+
 const displayControls = function displayArrowsAndCircles(
+  carousel: Element,
   outerBorder: HTMLDivElement
 ) {
   const controlsContainer = document.createElement("div");
   controlsContainer.classList.add("controlsContainer");
   const circlesContainer = document.createElement("div");
   circlesContainer.classList.add("circlesContainer");
+  createCircles(carousel, circlesContainer);
   const arrowsContainer = document.createElement("div");
   arrowsContainer.classList.add("arrowsContainer");
   createArrows(arrowsContainer);
@@ -78,7 +98,7 @@ const displayCarousel = function createAndDisplayCarousel(carousel: Element) {
   innerBorder.classList.add("innerBorder");
   displayImage(carousel, innerBorder);
   outerBorder.appendChild(innerBorder);
-  displayControls(outerBorder);
+  displayControls(carousel, outerBorder);
   carousel.appendChild(outerBorder);
 };
 

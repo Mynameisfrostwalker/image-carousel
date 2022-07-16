@@ -43,6 +43,17 @@ body {
         @include mixins.size(100%, null, false);
     }
 
+    .circlesContainer { 
+        @include mixins.flex(row, center, space-around);
+        @include mixins.size(100%, null, false);
+    }
+
+    .circles {
+        @include mixins.box-control(1px, 1px, null, 50%);
+        @include mixins.color(null, $theme-color-2);
+        @include mixins.size(calc(1px + 0.5vh + 0.5vw), $min: false);
+    }
+
     .arrowsContainer {
         @include mixins.flex(row, center, space-around);
         @include mixins.size(100%, null, false);
