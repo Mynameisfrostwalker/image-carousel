@@ -87,4 +87,6 @@ const previousImage = function previousImageOnLeftArrowClick(e: Event) {
   moveImage(e, "previous");
 };
 
-export { next, nextImage, previousImage };
+const jumpImage = function jumpImageOnCircleClick() {};
+
+export { next, nextImage, previousImage, jumpImage };

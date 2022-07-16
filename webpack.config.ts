@@ -14,6 +14,8 @@ const config: Configuration = {
     images: "./src/scripts/images.ts",
     carouselDisplay: "./src/scripts/carouselDisplay.ts",
     transitions: "./src/scripts/transitions.ts",
+    pubsub: "./src/scripts/pubsub.ts",
+    circlenav: "./src/scripts/circlenav.ts",
   },
   module: {
     rules: [

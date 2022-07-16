@@ -1,28 +1,9 @@
+import { publish } from "./pubsub";
+
 const carouselStore: Carousel[] = [];
 
 const storeImgObj = function storeImagesObjects(obj: Carousel) {
   carouselStore.push(obj);
-};
-
-const createCircles = function createCirclesDisplay(id: string, num = 0) {
-  const carousel = document.querySelector(`#${id}`);
-  const circlesContainer = carousel?.querySelector(".circlesContainer");
-  if (circlesContainer) {
-    circlesContainer.replaceChildren();
-    for (let i = 0; i < carouselStore.length; i += 1) {
-      if (carouselStore[i].id === carousel?.id) {
-        const imgArrLength = carouselStore[i].returnImagesArray().length;
-        for (let j = 0; j < imgArrLength; j += 1) {
-          const circleDiv = document.createElement("div");
-          circleDiv.classList.add("circles", `frostwalkercircle-${j}`);
-          if (j === num) {
-            circleDiv.classList.add("active");
-          }
-          circlesContainer.appendChild(circleDiv);
-        }
-      }
-    }
-  }
 };
 
 class Carousel {
@@ -55,7 +36,7 @@ class Carousel {
         }
       });
     }
-    createCircles(this.id, this.current);
+    publish("imagesArrChange", this.id, this.current);
   }
 
   deleteImage(image: unknown, ...otherImages: unknown[]) {
@@ -77,7 +58,7 @@ class Carousel {
         }
       });
     }
-    createCircles(this.id, this.current);
+    publish("imagesArrChange", this.id, this.current);
   }
 
   returnImagesArray() {
@@ -97,6 +78,11 @@ class Carousel {
       this.current = this.imagesArr.length;
     }
     this.current -= 1;
+    return this.imagesArr[this.current];
+  }
+
+  jumpImage(current: number) {
+    this.current = current;
     return this.imagesArr[this.current];
   }
 }

@@ -8,6 +8,8 @@ import image5 from "../assets/image5.jpeg";
 import { Carousel } from "./images";
 import findCarousels from "./carouselDisplay";
 import { next } from "./transitions";
+import { subscribe } from "./pubsub";
+import createCircles from "./circlenav";
 
 window.addEventListener("load", findCarousels);
 const carousel1 = new Carousel("carousel1", 5000);
@@ -18,3 +20,4 @@ next();
 setTimeout(() => {
   carousel2.addImage(image1, image2);
 }, 8000);
+subscribe("imagesArrChange", createCircles);

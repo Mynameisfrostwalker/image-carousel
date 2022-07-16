@@ -69,7 +69,8 @@ const createCircles = function createCirclesDisplay(
       const imgArrLength = carouselStore[i].returnImagesArray().length;
       for (let j = 0; j < imgArrLength; j += 1) {
         const circleDiv = document.createElement("div");
-        circleDiv.classList.add("circles", `frostwalkercircle-${j}`);
+        circleDiv.classList.add("circles");
+        circleDiv.id = `frostwalkercircle-${j}`;
         if (j === num) {
           circleDiv.classList.add("active");
         }
