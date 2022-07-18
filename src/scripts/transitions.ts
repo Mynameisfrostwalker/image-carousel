@@ -45,6 +45,7 @@ const next = function setTimerForNextImage() {
   carousels.forEach((carousel) => {
     for (let i = 0; i < carouselStore.length; i += 1) {
       if (carouselStore[i].id === carousel.id) {
+        window.clearInterval(nextIntervalId[carousel.id]);
         nextIntervalId[carousel.id] = window.setInterval(() => {
           changeImage(carousel, i);
         }, carouselStore[i].timer);

@@ -112,6 +112,7 @@ const displayCarousel = function createAndDisplayCarousel(carousel: Element) {
 const findCarousels = function findAndShowCarouselOnPageLoad() {
   const carousels = document.querySelectorAll(".frostwalkercarousel");
   carousels.forEach((carousel) => {
+    carousel.replaceChildren();
     displayCarousel(carousel);
   });
 };

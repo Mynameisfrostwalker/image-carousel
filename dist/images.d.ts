@@ -12,4 +12,4 @@ declare class Carousel {
     previousImage(): HTMLImageElement;
     jumpImage(current: number): HTMLImageElement;
 }
-export { carouselStore, Carousel };
+export { Carousel, carouselStore };

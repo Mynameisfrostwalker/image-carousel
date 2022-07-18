@@ -1,8 +1,9 @@
 {
   "name": "image-carousel-frostwalker",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Image carousel",
-  "main": "dist/index.bundle.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Image carousel running\"",
     "start": "webpack serve --open",

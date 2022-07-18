@@ -4,20 +4,6 @@ $theme-color: black;
 $theme-color-2: white;
 $theme-color-3: cyan;
 
-body {
-    min-width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    width: 40vw;
-    height: 40vh;
-    margin: 10px;
-}
-
 .frostwalkercarousel {
     @include mixins.size(100%, 100%, false);
     @include mixins.flex(row, stretch, stretch);

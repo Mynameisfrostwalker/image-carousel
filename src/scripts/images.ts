@@ -87,4 +87,4 @@ class Carousel {
   }
 }
 
-export { carouselStore, Carousel };
+export { Carousel, carouselStore };
